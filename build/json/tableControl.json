@@ -1,0 +1,77 @@
+{
+    "1": {
+        "table": "user",
+        "deleteAccess": {
+            "1": {
+                "check": 1
+            }
+        },
+        "statusAccess": {
+            "1": {
+                "check": 1,
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "2": {
+        "table": "product",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "3": {
+        "table": "product_sub_category",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "4": {
+        "table": "order_bill",
+        "deleteAccess": {
+            "1": {
+                "check": 2
+            }
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "5": {
+        "table": "order_payment",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    }
+}
