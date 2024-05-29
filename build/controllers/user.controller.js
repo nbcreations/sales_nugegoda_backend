@@ -43,6 +43,7 @@ var user_service_1 = __importDefault(require("../services/user.service"));
 var logger_1 = __importDefault(require("../config/logger"));
 var user_validate_1 = __importDefault(require("./../validate/user.validate"));
 var DefaultResponse_1 = __importDefault(require("../utils/DefaultResponse"));
+var authorize_1 = __importDefault(require("../utils/authorize"));
 var catchAsync_1 = __importDefault(require("../utils/catchAsync"));
 var validate_1 = __importDefault(require("../utils/validate"));
 var user_login = (0, catchAsync_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
@@ -72,7 +73,42 @@ var user_login = (0, catchAsync_1.default)(function (req, res) { return __awaite
         }
     });
 }); });
+var user_check = (0, catchAsync_1.default)(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var data, authData, result, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 3, , 4]);
+                return [4 /*yield*/, (0, validate_1.default)(req.body, user_validate_1.default.user_check)];
+            case 1:
+                data = _a.sent();
+                if (!data.status) {
+                    res.status(200).send(data);
+                    return [2 /*return*/];
+                }
+                authData = (0, authorize_1.default)('user', 'user_check', req);
+                if (!authData.status) {
+                    DefaultResponse_1.default.error(res, '403');
+                    return [2 /*return*/];
+                }
+                data.data.authUserId = authData.data.user;
+                data.data.authUserRole = authData.data.role;
+                return [4 /*yield*/, user_service_1.default.user_check(data.data)];
+            case 2:
+                result = _a.sent();
+                res.status(200).send(result);
+                return [3 /*break*/, 4];
+            case 3:
+                err_2 = _a.sent();
+                logger_1.default.error(err_2);
+                DefaultResponse_1.default.error(res, "500");
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
 exports.default = {
-    user_login: user_login
+    user_login: user_login,
+    user_check: user_check
 };
 //# sourceMappingURL=user.controller.js.map

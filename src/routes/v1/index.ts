@@ -1,4 +1,7 @@
 import express, { Router } from 'express';
+import card_discountRoute from './card_discount.route';
+import bankRoute from './bank.route';
+import global_discountRoute from './global_discount.route';
 import order_paymentRoute from './order_payment.route';
 import order_itemRoute from './order_item.route';
 import order_billRoute from './order_bill.route';
@@ -21,6 +24,9 @@ interface defaultRoutesObj {
   route: Router;
 }
 const defaultRoutes:defaultRoutesObj[] = [
+  { path: '/card_discount', route: card_discountRoute },
+  { path: '/bank', route: bankRoute },
+  { path: '/global_discount', route: global_discountRoute },
   { path: '/order_payment', route: order_paymentRoute },
   { path: '/order_item', route: order_itemRoute },
   { path: '/order_bill', route: order_billRoute },

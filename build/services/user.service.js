@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var user_model_1 = __importDefault(require("../models/user.model"));
+var user_model_2 = __importDefault(require("../models/user.model"));
 var DefaultResponse_1 = __importDefault(require("../utils/DefaultResponse"));
 var logger_1 = __importDefault(require("../config/logger"));
 var user_login = function (data) { return __awaiter(void 0, void 0, void 0, function () {
@@ -49,7 +50,7 @@ var user_login = function (data) { return __awaiter(void 0, void 0, void 0, func
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 result = void 0;
-                return [4 /*yield*/, user_model_1.default.user_login(data.email, data.password)];
+                return [4 /*yield*/, user_model_2.default.user_login(data.email, data.password)];
             case 1:
                 result = _a.sent();
                 return [2 /*return*/, result];
@@ -61,7 +62,27 @@ var user_login = function (data) { return __awaiter(void 0, void 0, void 0, func
         }
     });
 }); };
+var user_check = function (data) { return __awaiter(void 0, void 0, void 0, function () {
+    var result, err_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                result = void 0;
+                return [4 /*yield*/, user_model_1.default.user_check(data.authUserId)];
+            case 1:
+                result = _a.sent();
+                return [2 /*return*/, result];
+            case 2:
+                err_2 = _a.sent();
+                logger_1.default.error(err_2);
+                return [2 /*return*/, DefaultResponse_1.default.errorFormat("500")];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
 exports.default = {
-    user_login: user_login
+    user_login: user_login,
+    user_check: user_check
 };
 //# sourceMappingURL=user.service.js.map

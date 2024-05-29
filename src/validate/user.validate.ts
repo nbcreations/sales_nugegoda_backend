@@ -20,6 +20,12 @@ const user_login = joi.object({
 
 });
 
+const user_check = joi.object({
+
+
+});
+
 export default {
-    user_login
+    user_login,
+    user_check
 }

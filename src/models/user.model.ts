@@ -37,6 +37,27 @@ const user_login = async ( email:string, password:string ) => {
 
 };
 
+const user_check = async ( authUserId: number ) => {
+
+    try {
+
+        let result = await db.query(`SELECT user.id, user.role FROM user WHERE user.id = ? && user.status = ?`, [ authUserId, 1]);
+        if (!result.status) {
+            return result;
+        }
+        if(result.data.length === 0) {
+            return DefaultResponse.errorFormat("404");
+        }
+        return DefaultResponse.successFormat("200", result.data[0]);
+
+    } catch ( err ) {
+        logger.error( err );
+        return DefaultResponse.errorFormat("500");
+    }
+    
+};
+
 export default {
-    user_login
+    user_login,
+    user_check
 }

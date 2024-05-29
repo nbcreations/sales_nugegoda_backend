@@ -43,6 +43,7 @@ var bcrypt_1 = __importDefault(require("bcrypt"));
 var config_1 = __importDefault(require("./../config/config"));
 var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 var db_1 = __importDefault(require("../config/db"));
+var logger_1 = __importDefault(require("../config/logger"));
 var DefaultResponse_1 = __importDefault(require("../utils/DefaultResponse"));
 var user_login = function (email, password) { return __awaiter(void 0, void 0, void 0, function () {
     var result, accessToken;
@@ -72,7 +73,32 @@ var user_login = function (email, password) { return __awaiter(void 0, void 0, v
         }
     });
 }); };
+var user_check = function (authUserId) { return __awaiter(void 0, void 0, void 0, function () {
+    var result, err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, db_1.default.query("SELECT user.id, user.role FROM user WHERE user.id = ? && user.status = ?", [authUserId, 1])];
+            case 1:
+                result = _a.sent();
+                if (!result.status) {
+                    return [2 /*return*/, result];
+                }
+                if (result.data.length === 0) {
+                    return [2 /*return*/, DefaultResponse_1.default.errorFormat("404")];
+                }
+                return [2 /*return*/, DefaultResponse_1.default.successFormat("200", result.data[0])];
+            case 2:
+                err_1 = _a.sent();
+                logger_1.default.error(err_1);
+                return [2 /*return*/, DefaultResponse_1.default.errorFormat("500")];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
 exports.default = {
-    user_login: user_login
+    user_login: user_login,
+    user_check: user_check
 };
 //# sourceMappingURL=user.model.js.map

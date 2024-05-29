@@ -26,7 +26,19 @@
         ]
     },
     "user": {
-        "user_login": []
+        "user_login": [],
+        "user_check": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+        ]
     },
     "product": {
         "product_add": [
@@ -109,6 +121,45 @@
             1
         ],
         "order_payment_history": [
+            1
+        ]
+    },
+    "global_discount": {
+        "global_discount_update": [
+            1,
+            2,
+            3
+        ],
+        "global_discount_view": [
+            1
+        ]
+    },
+    "bank": {
+        "bank_add": [
+            1
+        ],
+        "bank_edit": [
+            1
+        ],
+        "bank_view": [
+            1
+        ],
+        "bank_list": [
+            1
+        ],
+        "bank_active_list": []
+    },
+    "card_discount": {
+        "card_discount_add": [
+            1
+        ],
+        "card_discount_edit": [
+            1
+        ],
+        "card_discount_view": [
+            1
+        ],
+        "card_discount_list": [
             1
         ]
     }

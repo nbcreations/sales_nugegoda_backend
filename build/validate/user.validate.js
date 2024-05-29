@@ -18,7 +18,9 @@ var user_login = joi_1.default.object({
         .messages({ 'string.min': 'wrong password' })
         .required(),
 });
+var user_check = joi_1.default.object({});
 exports.default = {
-    user_login: user_login
+    user_login: user_login,
+    user_check: user_check
 };
 //# sourceMappingURL=user.validate.js.map

@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var user_controller_1 = __importDefault(require("../../controllers/user.controller"));
 var express_1 = __importDefault(require("express"));
+var authenticate_1 = require("../../middlewares/authenticate");
 var router = express_1.default.Router();
 router.post('/login', user_controller_1.default.user_login);
+router.get('/check', authenticate_1.authenticate, user_controller_1.default.user_check);
 exports.default = router;
 /**
  * @swagger
@@ -36,6 +38,19 @@ exports.default = router;
  *                 type: string
  *                 description: password
  *                 example: "example text"
+ *     responses:
+ *       '200':
+ *         description: Success
+ */
+/**
+ * @swagger
+ * /user/check:
+ *   get:
+ *     summary: user
+ *     description: user_check
+ *     tags: [user]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: Success

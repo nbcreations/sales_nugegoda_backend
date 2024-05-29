@@ -4,6 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var card_discount_route_1 = __importDefault(require("./card_discount.route"));
+var bank_route_1 = __importDefault(require("./bank.route"));
+var global_discount_route_1 = __importDefault(require("./global_discount.route"));
 var order_payment_route_1 = __importDefault(require("./order_payment.route"));
 var order_item_route_1 = __importDefault(require("./order_item.route"));
 var order_bill_route_1 = __importDefault(require("./order_bill.route"));
@@ -20,6 +23,9 @@ var docs_route_1 = __importDefault(require("./docs.route"));
 var config_1 = __importDefault(require("../../config/config"));
 var router = express_1.default.Router();
 var defaultRoutes = [
+    { path: '/card_discount', route: card_discount_route_1.default },
+    { path: '/bank', route: bank_route_1.default },
+    { path: '/global_discount', route: global_discount_route_1.default },
     { path: '/order_payment', route: order_payment_route_1.default },
     { path: '/order_item', route: order_item_route_1.default },
     { path: '/order_bill', route: order_bill_route_1.default },

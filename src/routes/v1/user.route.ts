@@ -4,6 +4,7 @@ import { Router } from 'express';
 import {authenticate} from '../../middlewares/authenticate';
 const router: Router = express.Router();
 router.post('/login', controller.user_login);
+router.get('/check', authenticate, controller.user_check);
 
 export default router;
 
@@ -36,6 +37,20 @@ export default router;
  *                 type: string
  *                 description: password
  *                 example: "example text"
+ *     responses:
+ *       '200':
+ *         description: Success
+ */
+
+/**
+ * @swagger
+ * /user/check:
+ *   get:
+ *     summary: user
+ *     description: user_check
+ *     tags: [user]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       '200':
  *         description: Success

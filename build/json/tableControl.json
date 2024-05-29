@@ -73,5 +73,33 @@
                 ]
             }
         }
+    },
+    "6": {
+        "table": "bank",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
+    },
+    "7": {
+        "table": "card_discount",
+        "deleteAccess": {
+            "1": {}
+        },
+        "statusAccess": {
+            "1": {
+                "status": [
+                    1,
+                    2
+                ]
+            }
+        }
     }
 }
